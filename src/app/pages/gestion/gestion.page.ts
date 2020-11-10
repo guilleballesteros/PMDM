@@ -9,17 +9,17 @@ export class GestionPage implements OnInit {
 
   componentes: Componente[] = [
     {
-    icon : 'american-football',
+    icon : 'reader-sharp',
     name: 'listado de fichas',
     redirectTo: 'listado'
     },
     {
-    icon : 'football-outline',
+    icon : 'add-circle-sharp',
     name: 'Alert',
     redirectTo: 'creacion de fichas'
     },
     {
-      icon : 'beaker',
+      icon : 'calendar-sharp',
       name: 'Avatar',
       redirectTo: 'asistencia'
     },
