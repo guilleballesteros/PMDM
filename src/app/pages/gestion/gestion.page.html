@@ -9,24 +9,12 @@
 
 <ion-content>
 
-  <!-- Botones para navegar --> 
-    <ion-button class="top-20" expand="full" routerLink="/listado" color="tertiary">
-      <img src="assets/img/List.png">
-      Listado 
-    </ion-button>
-    <!-- ion-row + ion-col -->
-  <ion-row class="top-20">
-    <ion-col>
-    <ion-button expand="full" routerLink="/creacion" shape="round" color="tertiary">
-     <img src="assets/img/Add.png" style="width : 100% ; height : 100%" ng-click="nextpage()" >
-    Creacion de fichas
-    </ion-button>
-    </ion-col>
-    <ion-col>
-    <ion-button expand="full" routerLink="/asistencia" shape="round" color="tertiary">
-    <img src="assets/img/Calendar.png" style="width : 100% ; height : 100%" ng-click="nextpage()" >
-    Asistencia
-    </ion-button>
-    </ion-col>
-    </ion-row>
+   <ion-list>
+    <ion-item *ngFor="let c of componentes"
+    [routerLink]="c.redirectTo" detail>
+    <ion-icon slot="start" [name]="c.icon"></ion-icon>
+    <ion-label>{{ c.name }}</ion-label>
+    </ion-item>
+   </ion-list>
+   
 </ion-content>
