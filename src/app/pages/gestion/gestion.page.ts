@@ -11,17 +11,17 @@ export class GestionPage implements OnInit {
     {
     icon : 'reader-sharp',
     name: 'listado de fichas',
-    redirectTo: 'listado'
+    redirectTo: '../listado'
     },
     {
     icon : 'add-circle-sharp',
     name: 'Creacion de fichas',
-    redirectTo: 'creacion de fichas'
+    redirectTo: '../creacion'
     },
     {
       icon : 'calendar-sharp',
       name: 'Avatar',
-      redirectTo: 'asistencia'
+      redirectTo: '../asistencia'
     },
     ];
 
