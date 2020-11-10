@@ -15,7 +15,7 @@ export class GestionPage implements OnInit {
     },
     {
     icon : 'add-circle-sharp',
-    name: 'Alert',
+    name: 'Creacion de fichas',
     redirectTo: 'creacion de fichas'
     },
     {
