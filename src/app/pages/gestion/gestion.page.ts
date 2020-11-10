@@ -29,5 +29,9 @@ export class GestionPage implements OnInit {
 
   ngOnInit() {
   }
-
+}
+interface Componente {
+  icon: string;
+  name: string;
+  redirectTo: string;
 }
