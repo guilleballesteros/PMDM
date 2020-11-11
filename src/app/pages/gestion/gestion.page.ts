@@ -9,17 +9,17 @@ export class GestionPage implements OnInit {
 
   componentes: Componente[] = [
     {
-    icon : 'reader-sharp',
+    imagen: "/assets/img/List",
     name: 'listado de fichas',
     redirectTo: '../listado'
     },
     {
-    icon : 'add-circle-sharp',
+    imagen: "/assets/img/Add.png",
     name: 'Creacion de fichas',
     redirectTo: '../creacion'
     },
     {
-      icon : 'calendar-sharp',
+      imagen: "../assets/img/Calendar.png",
       name: 'Avatar',
       redirectTo: '../asistencia'
     },
@@ -31,7 +31,7 @@ export class GestionPage implements OnInit {
   }
 }
 interface Componente {
-  icon: string;
+  imagen: string;
   name: string;
   redirectTo: string;
 }
