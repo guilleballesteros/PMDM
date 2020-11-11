@@ -9,7 +9,7 @@ export class GestionPage implements OnInit {
 
   componentes: Componente[] = [
     {
-    imagen: "/assets/img/List",
+    imagen: "/assets/img/List.png",
     name: 'listado de fichas',
     redirectTo: '../listado'
     },
