@@ -3,18 +3,18 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig: {
+    apiKey: 'AIzaSyB17YyiHTm1lpKlpcuCZYkJKD7lTKB3fqA',
+    authDomain: 'pmdm-2c.firebaseapp.com',
+    databaseURL: 'https://pmdm-2c.firebaseio.com',
+    projectId: 'pmdm-2c',
+    storageBucket: 'pmdm-2c.appspot.com',
+    messagingSenderId: '70424745193',
+    appId: '1:70424745193:web:65f24f2128dd43f6984c78'
+  }
 };
 
-export const firebaseConfig = {
-  apiKey: 'AIzaSyB17YyiHTm1lpKlpcuCZYkJKD7lTKB3fqA',
-  authDomain: 'pmdm-2c.firebaseapp.com',
-  databaseURL: 'https://pmdm-2c.firebaseio.com',
-  projectId: 'pmdm-2c',
-  storageBucket: 'pmdm-2c.appspot.com',
-  messagingSenderId: '70424745193',
-  appId: '1:70424745193:web:65f24f2128dd43f6984c78'
-};
 
 /*
  * For easier debugging in development mode, you can import the following file
