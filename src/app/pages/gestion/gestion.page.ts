@@ -11,17 +11,17 @@ export class GestionPage implements OnInit {
     {
     imagen: '/assets/img/Lista.png',
     name: 'Listado de fichas',
-    redirectTo: '../listado'
+    redirectTo: '/listado'
     },
     {
     imagen: '/assets/img/Add.png',
     name: 'Creacion de fichas',
-    redirectTo: '../creacion'
+    redirectTo: '/creacion'
     },
     {
       imagen: '/assets/img/Calendar.png',
       name: 'Asistencia',
-      redirectTo: '../asistencia'
+      redirectTo: '/asistencia'
     },
     ];
 

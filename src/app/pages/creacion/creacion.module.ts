@@ -8,6 +8,10 @@ import { CreacionPageRoutingModule } from './creacion-routing.module';
 
 import { CreacionPage } from './creacion.page';
 import { ComponentsModule } from '../../components/components.module';
+import { TaskI } from '../../models/task.interface';
+import { TodoService } from '../../services/todo.service';
+import { ActivatedRoute } from '@angular/router';
+import { NavController, LoadingController } from '@ionic/angular';
 
 @NgModule({
   imports: [

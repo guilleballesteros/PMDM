@@ -1,35 +1,20 @@
 <app-header titulo="Creacion de fichas"></app-header>
 
-<ion-content>
-
-async presentAlertInput() {
- const alert = await this.alertCtrl.create({
- header: 'Input:',
- subHeader: 'Nombre:',
- inputs: [
- {
- name: 'txtnombre',
- type: 'text',
- placeholder: 'Escribe tu nombre'
- }
- ],
- buttons: [
- {
- text: 'Cancelar',
- role: 'cancel',
- handler: () => {
- console.log('Botón Cancel');
- }
- }, {
- text: 'Ok',
- handler: ( dato ) => {
- this.titulo = dato.txtnombre;
- // console.log('Botón Ok');
- }
- }
- ]
- });
- await alert.present();
-}
-
+<ion-content class="ion-padding">
+    <ion-list lines="full">
+        <ion-item *ngIf="todo">
+          <ion-input required type="text" placeholder="actividad" [(ngModel)]="todo.actividad"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="todo">
+            <ion-input required type="date" placeholder="Priority"
+                        [(ngModel)]="todo.fecha"></ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-button expand="full" (click)="saveTodo()">Save</ion-button>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" color="danger">
+        <ion-fab-button routerLink="/" routerDirection="forward" color="danger"
+                        (click)="deleteTodo(todoId)">
+            <ion-icon name="trash"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>
