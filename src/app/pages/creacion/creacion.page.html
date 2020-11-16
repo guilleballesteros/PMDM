@@ -2,4 +2,34 @@
 
 <ion-content>
 
+async presentAlertInput() {
+ const alert = await this.alertCtrl.create({
+ header: 'Input:',
+ subHeader: 'Nombre:',
+ inputs: [
+ {
+ name: 'txtnombre',
+ type: 'text',
+ placeholder: 'Escribe tu nombre'
+ }
+ ],
+ buttons: [
+ {
+ text: 'Cancelar',
+ role: 'cancel',
+ handler: () => {
+ console.log('Botón Cancel');
+ }
+ }, {
+ text: 'Ok',
+ handler: ( dato ) => {
+ this.titulo = dato.txtnombre;
+ // console.log('Botón Ok');
+ }
+ }
+ ]
+ });
+ await alert.present();
+}
+
 </ion-content>
