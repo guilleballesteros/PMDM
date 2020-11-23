@@ -1,21 +1,25 @@
 <app-header titulo="Gestion de asistencia"></app-header>
 
 <ion-content>
-<div class="ion-padding">
-    <ion-button (click)="addFaltaJust()">Falta justificada</ion-button>
-    <ion-button (click)="addFaltaInjust()">Falta injustificada</ion-button>
-    
-    <calendar [eventSource]="eventSource"
-    [calendarMode]="calendar.mode"
-    [currentDate]="calendar.currentDate"
-    (onCurrentDateChanged)="onCurrentDateChanged($event)"
-    (onRangeChanged)="reloadSource(startTime, endTime)"
-    (onEventSelected)="onEventSelected($event)"
-    (onTitleChanged)="onViewTitleChanged($event)"
-    (onTimeSelected)="onTimeSelected($event)"
-    step="30">
-    
+    <calendar
+  [eventSource]="eventSource"
+  [calendarMode]="calendar.mode"
+  [currentDate]="calendar.currentDate"
+  (onEventSelected)="onEventSelected($event)"
+  (onTitleChanged)="onViewTitleChanged($event)"
+  startHour="6"
+  endHour="20"
+  step="30"
+  startingDayWeek="1"
+  [monthviewDisplayEventTemplate]="template"
+>
 </calendar>
-
-</div>
+    <ng-template #template let-view="view" let-row="row" let-col="col">
+    <div [class.with-event]="view.dates[row*7+col].events.length">
+        {{view.dates[row*7+col].label}}
+        <div class="indicator-container">
+        <div class="event-indicator" *ngFor="let e of view.dates[row*7+col].events"></div>
+        </div>
+    </div>
+    </ng-template>
 </ion-content>

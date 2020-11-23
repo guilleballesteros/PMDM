@@ -2,7 +2,6 @@ import { ElementSchemaRegistry, NodeWithI18n } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IonBackButtonDelegate } from '@ionic/angular';
-import { ECANCELED } from 'constants';
 import { runInThisContext } from 'vm';
 
 @Component({
