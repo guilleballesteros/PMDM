@@ -8,7 +8,9 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./listado.page.scss'],
 })
 export class ListadoPage implements OnInit {
-  todos: TaskI[];
+  fechaIni: Date;
+  fechaFin: Date;
+  public todos: TaskI [] = [];
   constructor(private todoService: TodoService) {}
   ngOnInit() {
     this.todoService.getTodos().subscribe(res => {
