@@ -1,8 +1,9 @@
 <app-header titulo="Gestion de asistencia"></app-header>
 
 <ion-content>
-
-    <ion-button (click)="addNewEvent()">Add new event</ion-button>
+<div class="ion-padding">
+    <ion-button (click)="addNewEvent()">Falta justificada</ion-button>
+    <ion-button (click)="addNewEvent()">Falta injustificada</ion-button>
     
     <calendar [eventSource]="eventSource"
     [calendarMode]="calendar.mode"
@@ -15,4 +16,6 @@
     step="30">
     
 </calendar>
+
+</div>
 </ion-content>
