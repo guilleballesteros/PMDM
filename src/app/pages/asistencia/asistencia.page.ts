@@ -2,7 +2,7 @@ import { ElementSchemaRegistry, NodeWithI18n } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IonBackButtonDelegate } from '@ionic/angular';
-import { runInThisContext } from 'vm';
+import { reduce } from 'rxjs/operators';
 
 @Component({
   selector: 'app-asistencia',
@@ -11,8 +11,8 @@ import { runInThisContext } from 'vm';
 })
 export class AsistenciaPage implements OnInit {
 
-
   eventSource = [];
+  J=false;
 
   calendar = {
     mode: 'month',
@@ -36,7 +36,7 @@ export class AsistenciaPage implements OnInit {
   ngOnInit(){
 
   }
-
+ 
   addFaltaJust() {
     let start = this.selectedDate;
     let end = this.selectedDate;
@@ -46,7 +46,8 @@ export class AsistenciaPage implements OnInit {
       title: 'FALTA JUSTIFICADA #' + start.getMinutes(),
       startTime: start,
       endTime: end,
-      justificada: true
+      addFaltaJust: true,
+      eventColor:'red'
     };
     this.db.collection(`Parte de asistencia`).add(event);
   };
@@ -54,12 +55,13 @@ export class AsistenciaPage implements OnInit {
     let start = this.selectedDate;
     let end = this.selectedDate;
     end.setMinutes(end.getMinutes() + 60);
-
+    
     let event = {
       title: 'FALTA INJUSTIFICADA #' + start.getMinutes(),
       startTime: start,
       endTime: end,
-      Justificada: false
+      J: false,
+      eventColor:'yellow'
   };
 
     this.db.collection(`Parte de asistencia`).add(event);
