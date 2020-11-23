@@ -1,19 +1,36 @@
 <app-header>Listado de Actividades</app-header>
 
 <ion-content class="ion-padding">
-  <ion-datetime placeholder="yyyy-mm-ss"
-                display-format="YYYY MMMM DD"
-                [(ngModel)] = "fechaIni">
-  </ion-datetime>
-  <ion-datetime placeholder="yyyy-mm-ss"
-                display-format="YYYY MMMM DD"
-                [min]="fechaIni">
-  </ion-datetime>
+  <ion-item>
+    <ion-label>Start date</ion-label>
+    <ion-datetime placeholder="yyyy-mm-ss"
+                  display-format="YYYY MMMM DD"
+                  [max]="fechaMax"
+                  (ionChange)="loadResults()"
+                  [(ngModel)] = "fechaIni">
+    </ion-datetime>
+    <ion-icon name="calendar"></ion-icon>
+  </ion-item>
+  <ion-item>
+    <ion-label>End date</ion-label>
+    <ion-datetime placeholder="yyyy-mm-ss"
+                  display-format="YYYY MMMM DD"
+                  [min]="fechaIni"
+                  [max]="fechaMax"
+                  (ionChange)="loadResults()"
+                  [(ngModel)] = "fechaFin">     
+    </ion-datetime>
+    <ion-icon name="calendar"></ion-icon>
+  </ion-item>
+  <h2>Results:</h2>
   <ion-list>
-    <ion-item-sliding *ngFor="let todo of todos">
-      <ion-item lines="inset">
+    <ion-item-sliding *ngFor="let todo of filtered">
+      <ion-item lines="inset" *ngIf="filtered">
         <ion-label> {{ todo.fecha }} </ion-label>
         <ion-label> {{ todo.actividad }} </ion-label>
+      </ion-item>
+      <ion-item lines="inset" *ngIf="!filtered">
+        <h3>No hay resultados</h3>
       </ion-item>
     </ion-item-sliding>
   </ion-list>

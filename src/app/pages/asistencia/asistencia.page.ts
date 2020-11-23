@@ -19,15 +19,15 @@ export class AsistenciaPage implements OnInit {
   };
   selectedDate = new Date();
 
-  constructor(private db : AngularFirestore,) { 
+  constructor(private db: AngularFirestore) {
 
     this.db.collection('events').snapshotChanges().subscribe(colSnap => {
       this.eventSource = [];
       colSnap.forEach(snap=>{
-        let event:any = snap.payload.doc.data();
+        let event: any = snap.payload.doc.data();
         event.id = snap.payload.doc.id;
-        event.startTime= event.starTime.toDate();
-        event.endTime= event.endTime.toDate();
+        event.startTime = event.starTime.toDate();
+        event.endTime = event.endTime.toDate();
         this.eventSource.push(event);
       });
     });

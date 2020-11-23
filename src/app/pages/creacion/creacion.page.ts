@@ -29,12 +29,12 @@ export class CreacionPage implements OnInit {
     if (this.todoId) { // Usaremos el mismo botón para actualizar y para crear
     this.todoService.updateTodo(this.todo, this.todoId).then(() => {
     this.loadingCtrl.dismiss();
-    this.navCtrl.navigateForward('/');
+    this.navCtrl.navigateForward('/listado');
     });
     } else {
     this.todoService.addTodo(this.todo).then(() => {
     this.loadingCtrl.dismiss();
-    this.navCtrl.navigateForward('/');
+    this.navCtrl.navigateForward('/listado');
     });
     }
    }

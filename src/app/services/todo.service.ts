@@ -9,11 +9,12 @@ import { TaskI } from '../models/task.interface';
 })
 export class TodoService {
   private todosCollection: AngularFirestoreCollection<TaskI>;
+  private todos: Observable<any[]>;
   constructor(private db: AngularFirestore) {
     this.todosCollection = db.collection<TaskI>('todos');
   }
   getTodos() {
-    return this.db.collection('todos').snapshotChanges().pipe(map(
+    this.todos = this.db.collection('todos').snapshotChanges().pipe(map(
       actions => { // Esto lo hacemos para iterar sobre todos los documentos
       return actions.map(a => {
       const data = a.payload.doc.data() as TaskI;
@@ -21,7 +22,11 @@ export class TodoService {
       return data;
       });
       }
-      ));
+    ));
+    return this.todos;
+  }
+  getTodosFiltro(fechai: Date, fechaf: Date){
+
   }
   getTodo(id: string) {
     return this.todosCollection.doc<TaskI>(id).valueChanges();

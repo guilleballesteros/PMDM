@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="tertiary">
     <ion-buttons slot="start">
-       <ion-back-button text="Cerrar Sesion" defaultHref="/"></ion-back-button> 
+      <ion-back-button text="Cerrar Sesion" defaultHref="/"></ion-back-button> 
     </ion-buttons>
     <ion-title>Gestion</ion-title>
   </ion-toolbar>
@@ -10,7 +10,6 @@
 <ion-content>
 
    <ion-list>
-
       <ion-card *ngFor="let c of componentes"
       [routerLink]="c.redirectTo" detail>
        <ion-card-header>
