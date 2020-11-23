@@ -14,7 +14,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ComponentsModule } from './components/components.module';
 
 import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, SETTINGS } from '@angular/fire/firestore';
 
 import { NgCalendarModule  } from 'ionic2-calendar';
 
@@ -35,7 +35,8 @@ import { NgCalendarModule  } from 'ionic2-calendar';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: SETTINGS, useValue: {}}
   ],
   bootstrap: [AppComponent]
 })
