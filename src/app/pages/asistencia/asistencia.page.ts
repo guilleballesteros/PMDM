@@ -1,6 +1,7 @@
 import { ElementSchemaRegistry, NodeWithI18n } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { IonBackButtonDelegate } from '@ionic/angular';
 import { ECANCELED } from 'constants';
 import { runInThisContext } from 'vm';
 
@@ -21,35 +22,48 @@ export class AsistenciaPage implements OnInit {
   selectedDate = new Date();
 
   constructor(private db: AngularFirestore,) {
-    this.db.collection(`events`).snapshotChanges().subscribe(colSnap => {
+    this.db.collection(`Parte de asistencia`).snapshotChanges().subscribe(colSnap => {
       this.eventSource = [];
       colSnap.forEach(snap => {
         let event:any = snap.payload.doc.data();
         event.id = snap.payload.doc.id;
         event.startTime = event.startTime.toDate();
         event.endTime = event.endTime.toDate();
-        console.log(event);
         this.eventSource.push(event);
       });
     });
   }
 
   ngOnInit(){
-    
+
   }
-  addNewEvent() {
+
+  addFaltaJust() {
     let start = this.selectedDate;
     let end = this.selectedDate;
     end.setMinutes(end.getMinutes() + 60);
 
     let event = {
-      title: 'Event #' + start.getMinutes(),
+      title: 'FALTA JUSTIFICADA #' + start.getMinutes(),
       startTime: start,
       endTime: end,
-      allDay: false,
+      justificada: true
     };
+    this.db.collection(`Parte de asistencia`).add(event);
+  };
+  addFaltaInjust() {
+    let start = this.selectedDate;
+    let end = this.selectedDate;
+    end.setMinutes(end.getMinutes() + 60);
 
-    this.db.collection(`events`).add(event);
+    let event = {
+      title: 'FALTA INJUSTIFICADA #' + start.getMinutes(),
+      startTime: start,
+      endTime: end,
+      Justificada: false
+  };
+
+    this.db.collection(`Parte de asistencia`).add(event);
   }
 
   onViewTitleChanged(title) {
@@ -64,6 +78,7 @@ export class AsistenciaPage implements OnInit {
     console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
       (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
     this.selectedDate = ev.selectedTime;
+   
   }
 
   onCurrentDateChanged(event: Date) {
