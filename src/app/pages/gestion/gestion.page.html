@@ -13,7 +13,7 @@
       <ion-card *ngFor="let c of componentes"
       [routerLink]="c.redirectTo" detail>
        <ion-card-header>
-        <ion-card-title>{{ c.name }}</ion-card-title>
+        <ion-card-title style="text-align:center; font-weight: bold;">{{ c.name }}</ion-card-title>
          <ion-img src="{{ c.imagen }}" style="height: auto; max-width: 15vh;"></ion-img>
        </ion-card-header>
        
