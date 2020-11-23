@@ -16,6 +16,8 @@ import { ComponentsModule } from './components/components.module';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { NgCalendarModule  } from 'ionic2-calendar';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -27,6 +29,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     AngularFirestoreModule,
     AngularFireAuthModule,
     ComponentsModule,
+    NgCalendarModule,
 
   ],
   providers: [

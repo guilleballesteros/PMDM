@@ -8,6 +8,7 @@ import { AsistenciaPageRoutingModule } from './asistencia-routing.module';
 
 import { AsistenciaPage } from './asistencia.page';
 import { ComponentsModule } from '../../components/components.module';
+import { NgCalendarModule  } from 'ionic2-calendar';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { ComponentsModule } from '../../components/components.module';
     FormsModule,
     IonicModule,
     AsistenciaPageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    NgCalendarModule
   ],
   declarations: [AsistenciaPage]
 })
