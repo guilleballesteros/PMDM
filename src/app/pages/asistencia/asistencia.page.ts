@@ -12,7 +12,7 @@ import { reduce } from 'rxjs/operators';
 export class AsistenciaPage implements OnInit {
 
   eventSource = [];
-  J=false;
+  J=0;
 
   calendar = {
     mode: 'month',
@@ -28,6 +28,12 @@ export class AsistenciaPage implements OnInit {
         event.id = snap.payload.doc.id;
         event.startTime = event.startTime.toDate();
         event.endTime = event.endTime.toDate();
+        if(this.J==0){
+          event.eventColor='red'
+        }
+        else{
+          event.eventColor='yellow'
+        }
         this.eventSource.push(event);
       });
     });
@@ -43,11 +49,10 @@ export class AsistenciaPage implements OnInit {
     end.setMinutes(end.getMinutes() + 60);
 
     let event = {
-      title: 'FALTA JUSTIFICADA #' + start.getMinutes(),
+      title: 'FALTA JUSTIFICADA',
       startTime: start,
       endTime: end,
-      addFaltaJust: true,
-      eventColor:'red'
+      J: 1
     };
     this.db.collection(`Parte de asistencia`).add(event);
   };
@@ -57,11 +62,10 @@ export class AsistenciaPage implements OnInit {
     end.setMinutes(end.getMinutes() + 60);
     
     let event = {
-      title: 'FALTA INJUSTIFICADA #' + start.getMinutes(),
+      title: 'FALTA INJUSTIFICADA',
       startTime: start,
       endTime: end,
-      J: false,
-      eventColor:'yellow'
+      J: 0,
   };
 
     this.db.collection(`Parte de asistencia`).add(event);

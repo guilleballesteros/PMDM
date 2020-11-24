@@ -5,8 +5,9 @@
     <div *ngFor="let btn of btnArray;let ind = index">
         <button ion-button [style.background-color]="btn.backgroudColor" (click)="btnActivate(ind)">{{btn.title}}</button>
     </div>
-    <ion-button (click)= "addFaltaJust()" >Añadir falta justificada</ion-button>
-    <ion-button (click)= "addFaltaInjust()">Añadir falta injustificada</ion-button>
+
+    <ion-button style="--background:green"(click)= "addFaltaJust()" >Añadir falta justificada</ion-button>
+    <ion-button style="--background:red" (click)= "addFaltaInjust()">Añadir falta injustificada</ion-button>
 
 
     <calendar 
