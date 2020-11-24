@@ -9,7 +9,7 @@ import { TaskI } from '../models/task.interface';
 })
 export class TodoService {
   private todosCollection: AngularFirestoreCollection<TaskI>;
-  private todos: Observable<any[]>;
+  private todos: Observable<TaskI[]>;
   constructor(private db: AngularFirestore) {
     this.todosCollection = db.collection<TaskI>('todos');
   }
@@ -24,9 +24,6 @@ export class TodoService {
       }
     ));
     return this.todos;
-  }
-  getTodosFiltro(fechai: Date, fechaf: Date){
-
   }
   getTodo(id: string) {
     return this.todosCollection.doc<TaskI>(id).valueChanges();

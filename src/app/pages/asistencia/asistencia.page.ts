@@ -2,7 +2,6 @@ import { ElementSchemaRegistry, NodeWithI18n } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IonBackButtonDelegate } from '@ionic/angular';
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-asistencia',
@@ -24,7 +23,7 @@ export class AsistenciaPage implements OnInit {
     this.db.collection(`Parte de asistencia`).snapshotChanges().subscribe(colSnap => {
       this.eventSource = [];
       colSnap.forEach(snap => {
-        let event:any = snap.payload.doc.data();
+        let event: any = snap.payload.doc.data();
         event.id = snap.payload.doc.id;
         event.startTime = event.startTime.toDate();
         event.endTime = event.endTime.toDate();
