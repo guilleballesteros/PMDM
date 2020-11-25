@@ -12,7 +12,7 @@
 
     <calendar 
     [weekviewNormalEventTemplate]="template2"
-    [eventSource]="eventSource"
+    [eventSource]="service.todos"
     [calendarMode]="calendar.mode"
     [currentDate]="calendar.currentDate"
     (onCurrentDateChanged)="onCurrentDateChanged($event)"

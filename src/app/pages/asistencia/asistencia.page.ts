@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { IonBackButtonDelegate } from '@ionic/angular';
 import { reduce } from 'rxjs/operators';
+import { AssistanceService } from '../../services/asistance.service';
 
 @Component({
   selector: 'app-asistencia',
@@ -12,7 +13,7 @@ import { reduce } from 'rxjs/operators';
 export class AsistenciaPage implements OnInit {
 
   eventSource = [];
-  J=0;
+  J = 0;
 
   calendar = {
     mode: 'month',
@@ -20,55 +21,23 @@ export class AsistenciaPage implements OnInit {
   };
   selectedDate = new Date();
 
-  constructor(private db: AngularFirestore,) {
-    this.db.collection(`Parte de asistencia`).snapshotChanges().subscribe(colSnap => {
-      this.eventSource = [];
-      colSnap.forEach(snap => {
-        let event: any = snap.payload.doc.data();
-        event.id = snap.payload.doc.id;
-        event.startTime = event.startTime.toDate();
-        event.endTime = event.endTime.toDate();
-        if(this.J==0){
-          event.eventColor='red'
-        }
-        else{
-          event.eventColor='yellow'
-        }
-        this.eventSource.push(event);
-      });
-    });
+  constructor(private service: AssistanceService) {
+    service.getTodos();
   }
 
   ngOnInit(){
 
   }
- 
+
   addFaltaJust() {
-    let start = this.selectedDate;
-    let end = this.selectedDate;
-    end.setMinutes(end.getMinutes() + 60);
-
-    let event = {
-      title: 'FALTA JUSTIFICADA',
-      startTime: start,
-      endTime: end,
-      J: 1
-    };
-    this.db.collection(`Parte de asistencia`).add(event);
-  };
+    const start = this.selectedDate;
+    const end = this.selectedDate;
+    this.service.addFaltaJust(start, end);
+  }
   addFaltaInjust() {
-    let start = this.selectedDate;
-    let end = this.selectedDate;
-    end.setMinutes(end.getMinutes() + 60);
-    
-    let event = {
-      title: 'FALTA INJUSTIFICADA',
-      startTime: start,
-      endTime: end,
-      J: 0,
-  };
-
-    this.db.collection(`Parte de asistencia`).add(event);
+    const start = this.selectedDate;
+    const end = this.selectedDate;
+    this.service.addFaltaInjust(start, end);
   }
 
   onViewTitleChanged(title) {
@@ -83,7 +52,7 @@ export class AsistenciaPage implements OnInit {
     console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
       (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
     this.selectedDate = ev.selectedTime;
-   
+
   }
 
   onCurrentDateChanged(event: Date) {
